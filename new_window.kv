@@ -1,0 +1,343 @@
+#: import DrawButton grow_game.DrawButton
+
+WindowManager:
+	FirstWindow:
+	OpcoesJogo:
+	Instrucoes1Carta:
+	Instrucoes2Cartas:
+	Instrucoes3Cartas:
+	CartaValor1Carta:
+	CartaValor2Cartas:
+	CartaDesafio2Cartas:
+	CartaValor3Cartas:
+	CartaDesafio3Cartas:
+	CartaAcao3Cartas:
+ 
+
+<FirstWindow>:
+	name: "home"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "Grow-a-Game Brasil"
+			font_size: 40
+
+		Button:
+			text: "Iniciar Jogo"
+			font_size: 32
+			on_release: 
+				app.root.current = "opcoes_jogo"
+				root.manager.transition.direction = "left"
+
+<OpcoesJogo>:
+	name: "opcoes_jogo"
+
+	BoxLayout:
+	
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text:"Escolha o modo de jogo"
+			font_size: 32
+
+		Button:
+			text: "1 Carta"
+			font_size: 25
+			on_release: 
+				app.root.current = "instrucoes1"
+				root.manager.transition.direction = "left"
+
+		Button:
+			text: "2 Cartas"
+			font_size: 25
+			on_release: 
+				app.root.current = "instrucoes2"
+				root.manager.transition.direction = "left"
+
+		Button:
+			text: "3 Cartas"
+			font_size: 25
+			on_release: 
+				app.root.current = "instrucoes3"
+				root.manager.transition.direction = "left"
+
+<Instrucoes1Carta>:
+	name: "instrucoes1"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text:"Instruções"
+			font_size: 32
+
+		Button:
+			text: "Apenas o baralho de “Valores” é utilizado. Cada jogador retira uma carta do baralho e cada jogador pensa em um jogo existente que expresse ou necessite do conceito contido na carta"
+			font_size: 22
+			text_size: root.width, None
+    		size: self.texture_size
+			on_release: 
+				app.root.current = "carta_valor1"
+				root.manager.transition.direction = "left"
+
+<Instrucoes2Cartas>:
+	name: "instrucoes2"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text:"Instruções"
+			font_size: 32
+
+		Button:
+			text: "Cada jogador retira uma carta dos baralhos “Valores” e “Desafios” respectivamente e depois cada jogador/grupo fica responsável por desenvolver uma ideia inspirada na carta de desafio que expresse o que está contido na carta de valor."
+			font_size: 22
+			text_size: root.width, None
+    		size: self.texture_size
+			on_release: 
+				app.root.current = "carta_valor2"
+				root.manager.transition.direction = "left"
+
+<Instrucoes3Cartas>:
+	name: "instrucoes3"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text:"Instruções"
+			font_size: 32
+
+		Button:
+			text: "Cada jogador retira uma carta dos baralhos “Valores” e “Desafios” respectivamente e depois cada jogador/grupo fica responsável por desenvolver uma ideia inspirada na carta de desafio que expresse o que está contido na carta de valor."
+			font_size: 22
+			text_size: root.width, None
+    		size: self.texture_size
+			on_release: 
+				app.root.current = "carta_valor3"
+				root.manager.transition.direction = "left"
+
+<CartaValor1Carta>:
+	name: "carta_valor1"
+
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			size: root.width, root.height
+
+			Button:
+				text: "Go Back"
+				font_size: 25
+				on_release: 
+					app.root.current = "home"
+					root.manager.transition.direction = "right"
+
+			DrawButton:
+				text: "Retirar\n carta"
+				font_size: 32
+				on_release:
+					self.button_click(True)
+
+			Button:
+				text: "Next"
+				font_size: 25
+				on_release: 
+					app.root.current = "home"
+					root.manager.transition.direction = "right"
+
+		BoxLayout:
+			orientation: 'vertical'
+			TextInput:
+				id: 'id'
+				font_size: 32
+				hint_text: 'Comentários'
+
+<CartaValor2Cartas>:
+	name: "carta_valor2"
+
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			size: root.width, root.height
+
+			Button:
+				text: "Go Back"
+				font_size: 25
+				on_release: 
+					app.root.current = "home"
+					root.manager.transition.direction = "right"
+
+			DrawButton:
+				text: "Retirar\n carta"
+				font_size: 32
+				on_release:
+					self.button_click(True)
+
+			Button:
+				text: "Next"
+				font_size: 25
+				on_release: 
+					app.root.current = "carta_desafio2"
+					root.manager.transition.direction = "left"
+
+		BoxLayout:
+			orientation: 'vertical'
+			TextInput:
+				id: 'id'
+				font_size: 32
+				hint_text: 'Comentários'
+
+<CartaDesafio2Cartas>:
+	name: "carta_desafio2"
+
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			size: root.width, root.height
+
+			Button:
+				text: "Go Back"
+				font_size: 25
+				on_release: 
+					app.root.current = "carta_valor2"
+					root.manager.transition.direction = "right"
+
+			DrawButton:
+				text: "Retirar\n carta"
+				font_size: 32
+				on_release:
+					self.button_click(True)
+
+			Button:
+				text: "Next"
+				font_size: 25
+				on_release: 
+					app.root.current = "home"
+					root.manager.transition.direction = "right"
+
+		BoxLayout:
+			orientation: 'vertical'
+			TextInput:
+				id: 'id'
+				font_size: 32
+				hint_text: 'Comentários'
+
+<CartaValor3Cartas>:
+	name: "carta_valor3"
+
+	BoxLayout:
+		orientation: "vertical"
+
+		BoxLayout:
+			orientation: "horizontal"
+			size: root.width, root.height
+
+			Button:
+				text: "Go Back"
+				font_size: 25
+				on_release: 
+					app.root.current = "home"
+					root.manager.transition.direction = "right"
+
+			DrawButton:
+				text: "Retirar\n carta"
+				font_size: 32
+				on_release:
+					self.button_click(True)
+
+			Button:
+				text: "Next"
+				font_size: 25
+				on_release: 
+					app.root.current = "carta_desafio3"
+					root.manager.transition.direction = "left"
+
+		BoxLayout:
+			orientation: 'vertical'
+			TextInput:
+				id: 'id'
+				font_size: 32
+				hint_text: 'Comentários'
+
+<CartaDesafio3Cartas>:
+	name: "carta_desafio3"
+
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			size: root.width, root.height
+
+			Button:
+				text: "Go Back"
+				font_size: 25
+				on_release: 
+					app.root.current = "carta_valor3"
+					root.manager.transition.direction = "right"
+
+			DrawButton:
+				text: "Retirar\n carta"
+				font_size: 32
+				on_release:
+					self.button_click(True)
+
+			Button:
+				text: "Next"
+				font_size: 25
+				on_release: 
+					app.root.current = "carta_acao3"
+					root.manager.transition.direction = "left"
+
+		BoxLayout:
+			orientation: 'vertical'
+			TextInput:
+				id: 'id'
+				font_size: 32
+				hint_text: 'Comentários'
+
+<CartaAcao3Cartas>:
+	name: "carta_acao3"
+
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			size: root.width, root.height
+
+			Button:
+				text: "Go Back"
+				font_size: 25
+				on_release: 
+					app.root.current = "carta_desafio3"
+					root.manager.transition.direction = "right"
+
+			DrawButton:
+				text: "Retirar\n carta"
+				font_size: 32
+				on_release:
+					self.button_click(True)
+
+			Button:
+				text: "Next"
+				font_size: 25
+				on_release: 
+					app.root.current = "home"
+					root.manager.transition.direction = "right"
+
+		BoxLayout:
+			orientation: 'vertical'
+			TextInput:
+				id: 'id'
+				font_size: 32
+				hint_text: 'Comentários'
