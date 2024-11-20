@@ -4,6 +4,7 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from kivy.core.clipboard import Clipboard
 import random
 
 class FirstWindow(Screen):
@@ -24,10 +25,16 @@ class OpcoesJogo(Screen):
 class CartaValor1Carta(Screen):
     pass
 
+class Copiar1Carta(Screen):
+    pass
+
 class CartaValor2Cartas(Screen):
     pass
 
 class CartaDesafio2Cartas(Screen):
+    pass
+
+class Copiar2Cartas(Screen):
     pass
 
 class CartaValor3Cartas(Screen):
@@ -39,11 +46,45 @@ class CartaDesafio3Cartas(Screen):
 class CartaAcao3Cartas(Screen):
     pass
 
+class Copiar3Cartas(Screen):
+    pass
+
 class WindowManager(ScreenManager):
     pass
 
+copy_valor = ''
+copy_desafio = ''
+copy_acao = ''
+
+def add_to_copy(card, comment, card_type):
+    global copy_valor, copy_desafio, copy_acao
+    if card_type == 'valor':
+        copy_valor = f'Carta VALOR selecionada: {card} \n\nComentários: {comment}'
+        print(copy_valor)
+
+    if card_type == 'desafio':
+        copy_desafio = f'Carta DESAFIO selecionada: {card} \n\nComentários: {comment}'
+        print(copy_desafio)
+
+    if card_type == 'acao':
+        copy_acao = f'Carta AÇÃO selecionada: {card} \n\nComentários: {comment}'
+        print(copy_acao)
+
+def copy_to_clickboard(game_type):
+    if game_type == '1 carta':
+        print(copy_valor)
+        Clipboard.copy(copy_valor)
+
+    if game_type == '2 cartas':
+        print(copy_desafio)
+        Clipboard.copy(copy_valor + '\n\n\n' + copy_desafio)
+
+    if game_type == '3 cartas':
+        print(copy_acao)
+        Clipboard.copy(copy_valor + '\n\n\n' + copy_desafio + '\n\n\n' + copy_acao)
+
 class DrawButton(Button):
-    cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']
+    cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']    
 
     def __init__(self, **kwargs):
         super(Button, self).__init__(**kwargs)
@@ -54,33 +95,12 @@ class DrawButton(Button):
         card = random.choice(self.cards)
         self.text = card
 
-class GamePage(BoxLayout):
-
-    def __init__(self, **kwargs):
-        super(GamePage, self).__init__(**kwargs)
-        self.orientation = 'vertical'
-        self.label = Label(text='Carta de Valor', font_size=25)
-        self.add_widget(self.label)
-        btn = DrawButton()
-        self.add_widget(btn)
-
 kv = Builder.load_file('new_window.kv')
 
-class MainPage(BoxLayout):
-
+class GetInfoFromAnotherClass(BoxLayout):
     def __init__(self, **kwargs):
-        super(MainPage, self).__init__(**kwargs)
-        self.orientation = 'vertical'
-        self.label = Label(text='Grow-a-Game Brasil', font_size=40)
-        self.add_widget(self.label)
-
-        btn = Button(text='Pressione aqui para iniciar o jogo')
-        btn.bind(on_press=self.card_clicked)
-        self.add_widget(btn)
-
-    def card_clicked(self, instance):
-        self.label.text = 'Você clicou na carta!'
-        
+        super().__init__(**kwargs)
+        self.app = App.get_running_app()
 
 class CardGameApp(App):
     def build(self):
