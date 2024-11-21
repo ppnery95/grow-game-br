@@ -81,6 +81,7 @@ WindowManager:
 		Label:
 			text:"Instruções"
 			font_size: 48
+			size_hint: (1, 0.3)
 
 		Button:
 			text: "Apenas o baralho de “Valores” é utilizado. Cada jogador retira uma carta do baralho e cada jogador pensa em um jogo existente que expresse ou necessite do conceito contido na carta"
@@ -136,11 +137,10 @@ WindowManager:
 
 	BoxLayout:
 		orientation: "vertical"
-
 		Label:
 			text: "Carta Valor"
 			font_size: 48
-
+			size_hint: (1, 0.3)
 		BoxLayout:
 			id: valor_box
 			orientation: "horizontal"
@@ -148,7 +148,8 @@ WindowManager:
 
 			Button:
 				text: "<<"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "home"
 					root.manager.transition.direction = "right"
@@ -156,13 +157,14 @@ WindowManager:
 			DrawButton:
 				id: id_carta_valor_uma_carta
 				text: "Retirar\n carta"
-				font_size: 48
+				font_size: 40
 				on_release:
 					self.button_click(True)
 
 			Button:
 				text: ">>"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					add_to_copy(id_carta_valor_uma_carta.text, comentarios_valor_uma_carta.text, 'valor')
 					app.root.current = "copiar_1_carta"
@@ -170,6 +172,7 @@ WindowManager:
 
 		BoxLayout:
 			orientation: 'vertical'
+			size_hint: (1, 0.5)
 			TextInput:
 				id: comentarios_valor_uma_carta
 				font_size: 40
@@ -188,7 +191,8 @@ WindowManager:
 
 			Button:
 				text: "<<"
-				font_size: 40
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "carta_valor1"
 					root.manager.transition.direction = "right"
@@ -210,7 +214,8 @@ WindowManager:
 
 			Button:
 				text: "<<"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "home"
 					root.manager.transition.direction = "right"
@@ -224,7 +229,8 @@ WindowManager:
 
 			Button:
 				text: ">>"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release:
 					add_to_copy(id_carta_valor_duas_cartas.text, comentarios_valor_duas_cartas.text, 'valor')
 					app.root.current = "carta_desafio2"
@@ -248,7 +254,8 @@ WindowManager:
 
 			Button:
 				text: "<<"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "carta_valor2"
 					root.manager.transition.direction = "right"
@@ -262,7 +269,8 @@ WindowManager:
 
 			Button:
 				text: ">>"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					add_to_copy(carta_desafio_duas_cartas.text, comentario_desafio_duas_cartas.text, 'desafio')
 					app.root.current = "copiar_2_cartas"
@@ -286,7 +294,8 @@ WindowManager:
 
 			Button:
 				text: "<<"
-				font_size: 40
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "carta_desafio2"
 					root.manager.transition.direction = "left"
@@ -309,7 +318,8 @@ WindowManager:
 
 			Button:
 				text: "<<"
-				font_size: 48
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "home"
 					root.manager.transition.direction = "right"
@@ -323,7 +333,8 @@ WindowManager:
 
 			Button:
 				text: ">>"
-				font_size: 25
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					add_to_copy(valor_tres_cartas.text, comentario_valor_tres_cartas.text, 'valor')
 					app.root.current = "carta_desafio3"
@@ -346,8 +357,9 @@ WindowManager:
 			size: root.width, root.height
 
 			Button:
-				text: "Go Back"
-				font_size: 25
+				text: "<<"
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "carta_valor3"
 					root.manager.transition.direction = "right"
@@ -360,8 +372,9 @@ WindowManager:
 					self.button_click(True)
 
 			Button:
-				text: "Next"
-				font_size: 25
+				text: ">>"
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					add_to_copy(desafio_tres_cartas.text, comentario_desafio_tres_cartas.text, 'desafio')
 					app.root.current = "carta_acao3"
@@ -384,8 +397,9 @@ WindowManager:
 			size: root.width, root.height
 
 			Button:
-				text: "Go Back"
-				font_size: 25
+				text: "<<"
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "carta_desafio3"
 					root.manager.transition.direction = "right"
@@ -398,8 +412,9 @@ WindowManager:
 					self.button_click(True)
 
 			Button:
-				text: "Next"
-				font_size: 25
+				text: ">>"
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					add_to_copy(acao_tres_cartas.text, comentario_acao_tres_cartas.text, 'acao')
 					app.root.current = "copiar_3_cartas"
@@ -422,8 +437,9 @@ WindowManager:
 			size: root.width, root.height
 
 			Button:
-				text: "Back"
-				font_size: 40
+				text: "<<"
+				font_size: 35
+				size_hint: (0.4, 1)
 				on_release: 
 					app.root.current = "carta_acao3"
 					root.manager.transition.direction = "right"
