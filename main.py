@@ -84,7 +84,21 @@ def copy_to_clickboard(game_type):
         Clipboard.copy(copy_valor + '\n\n\n' + copy_desafio + '\n\n\n' + copy_acao)
 
 class DrawButton(Button):
-    cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']    
+    cards_valores = [
+        'EQUIDADE DE GÊNERO',
+        'INCLUSÃO',
+        'DIVERSIDADE',
+        'DEMOCRACIA',
+        'DIGNIDADE',
+        'CRIATIVIDADE (LIBERDADE DE EXPRESSÃO)',
+        'IMPESSOALIDADE',
+        'COOPERAÇÃO / COMPARTILHAMENTO',
+        'INOVAÇÃO',
+        'LIBERDADE',
+        'PARTICIPAÇÃO SOCIAL',
+        'ACESSIBILIDADE',
+        'COMPROMETIMENTO',
+    ]    
 
     def __init__(self, **kwargs):
         super(Button, self).__init__(**kwargs)
@@ -93,6 +107,33 @@ class DrawButton(Button):
 
     def button_click(self, instance):
         card = random.choice(self.cards)
+        self.text = card
+
+class DrawButtonValor(Button):
+    cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']
+    cards_valores = [
+        'EQUIDADE DE GÊNERO',
+        'INCLUSÃO',
+        'DIVERSIDADE',
+        'DEMOCRACIA',
+        'DIGNIDADE',
+        'CRIATIVIDADE (LIBERDADE DE EXPRESSÃO)',
+        'IMPESSOALIDADE',
+        'COOPERAÇÃO / COMPARTILHAMENTO',
+        'INOVAÇÃO',
+        'LIBERDADE',
+        'PARTICIPAÇÃO SOCIAL',
+        'ACESSIBILIDADE',
+        'COMPROMETIMENTO',
+    ]    
+
+    def __init__(self, **kwargs):
+        super(Button, self).__init__(**kwargs)
+        self.text = 'Retira\n carta'
+        self.bind(on_press=self.button_click)
+
+    def button_click(self, instance):
+        card = random.choice(self.cards_valores)
         self.text = card
 
 kv = Builder.load_file('new_window.kv')

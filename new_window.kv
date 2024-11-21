@@ -1,3 +1,4 @@
+#: import DrawButtonValor main.DrawButtonValor
 #: import DrawButton main.DrawButton
 #: import add_to_copy main.add_to_copy
 #: import copy_to_clickboard main.copy_to_clickboard
@@ -154,9 +155,11 @@ WindowManager:
 					app.root.current = "home"
 					root.manager.transition.direction = "right"
 
-			DrawButton:
+			DrawButtonValor:
 				id: id_carta_valor_uma_carta
 				text: "Retirar\n carta"
+				text_size: self.width, None
+				height: self.texture_size[1]
 				font_size: 40
 				on_release:
 					self.button_click(True)
