@@ -84,8 +84,22 @@ WindowManager:
 			font_size: 48
 			size_hint: (1, 0.3)
 
+		ScrollView:
+			do_scroll_x: False
+			do_scroll_y: True
+
+			Label:
+				size_hint_y: None
+				height: self.texture_size[1]
+				text_size: root.width, None
+				padding: 10, 10
+				font_size: 30
+				text:
+					'1-10 jogadores \n10 a 30 minutos \n\n1. Cada jogador retira uma Carta de Valor, clicando em "Retirar Carta". \n\n2. Cada jogador pensa em um jogo existente que expressa ou requer o conceito na carta, utilizando o campo de comentários para anotações.'
+
+
 		Button:
-			text: "Apenas o baralho de “Valores” é utilizado. Cada jogador retira uma carta do baralho e cada jogador pensa em um jogo existente que expresse ou necessite do conceito contido na carta"
+			text: ">>"
 			font_size: 40
 			text_size: root.width, None
     		size: self.texture_size
@@ -103,9 +117,23 @@ WindowManager:
 		Label:
 			text:"Instruções"
 			font_size: 48
+			size_hint: (1, 0.3)
+
+		ScrollView:
+			do_scroll_x: False
+			do_scroll_y: True
+
+			Label:
+				size_hint_y: None
+				height: self.texture_size[1]
+				text_size: root.width, None
+				padding: 10, 10
+				font_size: 30
+				text:
+					'3-8 jogadores ou equipes de 3-8 jogadores \n20 a 40 minutos \n\n1. Cada jogador ou equipe retira uma carta de cada um desses montes, utilizando o botão "retirar carta". \n\n2. Discutam por 10 minutos. Cada jogador ou grupo desenvolve uma ideia de jogo inspirada na carta de Desafio e que expressa a Carta de Valor que possui, utilizando o campo de comentário para anotações. \n\n3. Quando o tempo acabar, cada jogador ou grupo conta a ideia do jogo.'
 
 		Button:
-			text: "Cada jogador retira uma carta dos baralhos “Valores” e “Desafios” respectivamente e depois cada jogador/grupo fica responsável por desenvolver uma ideia inspirada na carta de desafio que expresse o que está contido na carta de valor."
+			text: ">>"
 			font_size: 40
 			text_size: root.width, None
     		size: self.texture_size
@@ -123,6 +151,7 @@ WindowManager:
 		Label:
 			text:"Instruções"
 			font_size: 48
+			size_hint: (1, 0.3)
 
 		Button:
 			text: "Cada jogador retira uma carta dos baralhos “Valores” e “Desafios” respectivamente e depois cada jogador/grupo fica responsável por desenvolver uma ideia inspirada na carta de desafio que expresse o que está contido na carta de valor."
@@ -158,8 +187,6 @@ WindowManager:
 			DrawButtonValor:
 				id: id_carta_valor_uma_carta
 				text: "Retirar\n carta"
-				text_size: self.width, None
-				height: self.texture_size[1]
 				font_size: 40
 				on_release:
 					self.button_click(True)

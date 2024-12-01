@@ -85,14 +85,14 @@ def copy_to_clickboard(game_type):
 
 class DrawButton(Button):
     cards_valores = [
-        'EQUIDADE DE GÊNERO',
+        'EQUIDADE \nDE GÊNERO',
         'INCLUSÃO',
         'DIVERSIDADE',
         'DEMOCRACIA',
         'DIGNIDADE',
-        'CRIATIVIDADE (LIBERDADE DE EXPRESSÃO)',
+        'CRIATIVIDADE \n(LIBERDADE DE EXPRESSÃO)',
         'IMPESSOALIDADE',
-        'COOPERAÇÃO / COMPARTILHAMENTO',
+        'COOPERAÇÃO / \nCOMPARTILHAMENTO',
         'INOVAÇÃO',
         'LIBERDADE',
         'PARTICIPAÇÃO SOCIAL',
@@ -106,23 +106,23 @@ class DrawButton(Button):
         self.bind(on_press=self.button_click)
 
     def button_click(self, instance):
-        card = random.choice(self.cards)
+        card = random.choice(self.cards_valores)
         self.text = card
 
 class DrawButtonValor(Button):
     cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']
     cards_valores = [
-        'EQUIDADE DE GÊNERO',
+        'EQUIDADE \nDE GÊNERO',
         'INCLUSÃO',
         'DIVERSIDADE',
         'DEMOCRACIA',
         'DIGNIDADE',
-        'CRIATIVIDADE (LIBERDADE DE EXPRESSÃO)',
+        'CRIATIVIDADE \n(LIBERDADE DE \nEXPRESSÃO)',
         'IMPESSOALIDADE',
-        'COOPERAÇÃO / COMPARTILHAMENTO',
+        'COOPERAÇÃO / \nCOMPARTILHAMENTO',
         'INOVAÇÃO',
         'LIBERDADE',
-        'PARTICIPAÇÃO SOCIAL',
+        'PARTICIPAÇÃO \nSOCIAL',
         'ACESSIBILIDADE',
         'COMPROMETIMENTO',
     ]    
