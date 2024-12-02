@@ -1,5 +1,6 @@
 #: import DrawButtonValor main.DrawButtonValor
-#: import DrawButton main.DrawButton
+#: import DrawButtonDesafio main.DrawButtonDesafio
+#: import DrawButtonAcao main.DrawButtonAcao
 #: import add_to_copy main.add_to_copy
 #: import copy_to_clickboard main.copy_to_clickboard
 #:import Clipboard kivy.core.clipboard.Clipboard
@@ -87,6 +88,7 @@ WindowManager:
 		ScrollView:
 			do_scroll_x: False
 			do_scroll_y: True
+			size_hint: (1, 2)
 
 			Label:
 				size_hint_y: None
@@ -100,9 +102,8 @@ WindowManager:
 
 		Button:
 			text: ">>"
-			font_size: 40
-			text_size: root.width, None
-    		size: self.texture_size
+			font_size: 35
+			size_hint: (1, 1)
 			on_release: 
 				app.root.current = "carta_valor1"
 				root.manager.transition.direction = "left"
@@ -122,6 +123,7 @@ WindowManager:
 		ScrollView:
 			do_scroll_x: False
 			do_scroll_y: True
+			size_hint: (1, 2)
 
 			Label:
 				size_hint_y: None
@@ -134,9 +136,8 @@ WindowManager:
 
 		Button:
 			text: ">>"
-			font_size: 40
-			text_size: root.width, None
-    		size: self.texture_size
+			font_size: 35
+			size_hint: (1, 1)
 			on_release: 
 				app.root.current = "carta_valor2"
 				root.manager.transition.direction = "left"
@@ -153,11 +154,24 @@ WindowManager:
 			font_size: 48
 			size_hint: (1, 0.3)
 
+		ScrollView:
+			do_scroll_x: False
+			do_scroll_y: True
+			size_hint: (1, 2)
+
+			Label:
+				size_hint_y: None
+				height: self.texture_size[1]
+				text_size: root.width, None
+				padding: 10, 10
+				font_size: 30
+				text:
+					'Equipes de 3-8 jogadores \n30 a 60 minutos \n1. Cada equipe retira uma carta de cada baralho, Valor, Desafio e Ação, utilizando o botão "retirar carta". \n2. As equipes têm de 20 a 40 minutos para desenvolver uma ideia de jogo. \n3. O design deve envolver o conceito na Carta de Desafio, usar o verbo da Carta de Ação como o mecânica central e expressar o Valor. Utilizem o campo de comentário para anotações. \n4. Quando o tempo acabar, um representante de cada grupo pode apresentar o design da equipe.'
+
 		Button:
-			text: "Cada jogador retira uma carta dos baralhos “Valores” e “Desafios” respectivamente e depois cada jogador/grupo fica responsável por desenvolver uma ideia inspirada na carta de desafio que expresse o que está contido na carta de valor."
-			font_size: 40
-			text_size: root.width, None
-    		size: self.texture_size
+			text: ">>"
+			font_size: 35
+			size_hint: (1, 1)
 			on_release: 
 				app.root.current = "carta_valor3"
 				root.manager.transition.direction = "left"
@@ -238,6 +252,12 @@ WindowManager:
 
 	BoxLayout:
 		orientation: "vertical"
+		
+		Label:
+			text: "Carta Valor"
+			font_size: 48
+			size_hint: (1, 0.3)
+
 		BoxLayout:
 			orientation: "horizontal"
 			size: root.width, root.height
@@ -250,7 +270,7 @@ WindowManager:
 					app.root.current = "home"
 					root.manager.transition.direction = "right"
 
-			DrawButton:
+			DrawButtonValor:
 				id: id_carta_valor_duas_cartas
 				text: "Retirar\n carta"
 				font_size: 48
@@ -268,16 +288,23 @@ WindowManager:
 
 		BoxLayout:
 			orientation: 'vertical'
+			size_hint: (1, 0.5)
 			TextInput:
 				id: comentarios_valor_duas_cartas
-				font_size: 32
+				font_size: 40
 				hint_text: 'Comentários'
+				allow_copy: True
+				copydata: self.text
 
 <CartaDesafio2Cartas>:
 	name: "carta_desafio2"
 
 	BoxLayout:
 		orientation: "vertical"
+		Label:
+			text: "Carta Desafio"
+			font_size: 48
+			size_hint: (1, 0.3)
 		BoxLayout:
 			orientation: "horizontal"
 			size: root.width, root.height
@@ -290,7 +317,7 @@ WindowManager:
 					app.root.current = "carta_valor2"
 					root.manager.transition.direction = "right"
 
-			DrawButton:
+			DrawButtonDesafio:
 				id: carta_desafio_duas_cartas
 				text: "Retirar\n carta"
 				font_size: 48
@@ -308,10 +335,13 @@ WindowManager:
 
 		BoxLayout:
 			orientation: 'vertical'
+			size_hint: (1, 0.5)
 			TextInput:
 				id: comentario_desafio_duas_cartas
-				font_size: 32
+				font_size: 40
 				hint_text: 'Comentários'
+				allow_copy: True
+				copydata: self.text
 
 <Copiar2Cartas>:
 	name: "copiar_2_cartas"
@@ -341,7 +371,10 @@ WindowManager:
 
 	BoxLayout:
 		orientation: "vertical"
-
+		Label:
+			text: "Carta Valor"
+			font_size: 48
+			size_hint: (1, 0.3)
 		BoxLayout:
 			orientation: "horizontal"
 			size: root.width, root.height
@@ -354,10 +387,10 @@ WindowManager:
 					app.root.current = "home"
 					root.manager.transition.direction = "right"
 
-			DrawButton:
+			DrawButtonValor:
 				id: valor_tres_cartas
 				text: "Retirar\n carta"
-				font_size: 32
+				font_size: 48
 				on_release:
 					self.button_click(True)
 
@@ -372,16 +405,25 @@ WindowManager:
 
 		BoxLayout:
 			orientation: 'vertical'
+			size_hint: (1, 0.5)
 			TextInput:
 				id: comentario_valor_tres_cartas
-				font_size: 32
+				font_size: 40
 				hint_text: 'Comentários'
+				allow_copy: True
+				copydata: self.text
 
 <CartaDesafio3Cartas>:
 	name: "carta_desafio3"
 
 	BoxLayout:
 		orientation: "vertical"
+
+		Label:
+			text: "Carta Desafio"
+			font_size: 48
+			size_hint: (1, 0.3)
+
 		BoxLayout:
 			orientation: "horizontal"
 			size: root.width, root.height
@@ -394,7 +436,7 @@ WindowManager:
 					app.root.current = "carta_valor3"
 					root.manager.transition.direction = "right"
 
-			DrawButton:
+			DrawButtonDesafio:
 				id: desafio_tres_cartas
 				text: "Retirar\n carta"
 				font_size: 48
@@ -412,16 +454,25 @@ WindowManager:
 
 		BoxLayout:
 			orientation: 'vertical'
+			size_hint: (1, 0.5)
 			TextInput:
 				id: comentario_desafio_tres_cartas
-				font_size: 32
+				font_size: 40
 				hint_text: 'Comentários'
+				allow_copy: True
+				copydata: self.text
 
 <CartaAcao3Cartas>:
 	name: "carta_acao3"
 
 	BoxLayout:
 		orientation: "vertical"
+
+		Label:
+			text: "Carta Ação"
+			font_size: 48
+			size_hint: (1, 0.3)
+
 		BoxLayout:
 			orientation: "horizontal"
 			size: root.width, root.height
@@ -434,7 +485,7 @@ WindowManager:
 					app.root.current = "carta_desafio3"
 					root.manager.transition.direction = "right"
 
-			DrawButton:
+			DrawButtonAcao:
 				id: acao_tres_cartas
 				text: "Retirar\n carta"
 				font_size: 48
@@ -452,10 +503,13 @@ WindowManager:
 
 		BoxLayout:
 			orientation: 'vertical'
+			size_hint: (1, 0.5)
 			TextInput:
 				id: comentario_acao_tres_cartas
-				font_size: 32
+				font_size: 40
 				hint_text: 'Comentários'
+				allow_copy: True
+				copydata: self.text
 
 <Copiar3Cartas>:
 	name: "copiar_3_cartas"

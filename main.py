@@ -83,32 +83,6 @@ def copy_to_clickboard(game_type):
         print(copy_acao)
         Clipboard.copy(copy_valor + '\n\n\n' + copy_desafio + '\n\n\n' + copy_acao)
 
-class DrawButton(Button):
-    cards_valores = [
-        'EQUIDADE \nDE GÊNERO',
-        'INCLUSÃO',
-        'DIVERSIDADE',
-        'DEMOCRACIA',
-        'DIGNIDADE',
-        'CRIATIVIDADE \n(LIBERDADE DE EXPRESSÃO)',
-        'IMPESSOALIDADE',
-        'COOPERAÇÃO / \nCOMPARTILHAMENTO',
-        'INOVAÇÃO',
-        'LIBERDADE',
-        'PARTICIPAÇÃO SOCIAL',
-        'ACESSIBILIDADE',
-        'COMPROMETIMENTO',
-    ]    
-
-    def __init__(self, **kwargs):
-        super(Button, self).__init__(**kwargs)
-        self.text = 'Retira\n carta'
-        self.bind(on_press=self.button_click)
-
-    def button_click(self, instance):
-        card = random.choice(self.cards_valores)
-        self.text = card
-
 class DrawButtonValor(Button):
     cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']
     cards_valores = [
@@ -136,12 +110,55 @@ class DrawButtonValor(Button):
         card = random.choice(self.cards_valores)
         self.text = card
 
-kv = Builder.load_file('new_window.kv')
+class DrawButtonDesafio(Button):
+    cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']
+    cards_desafios = [
+        'SEXISMO',
+        'COLONIALISMO',
+        'RACISMO',
+        'POLÍTICAS \nALIMENTARES',
+        'DESLOCAMENTO',
+        'POLUIÇÃO',
+        'CRIME',
+        'DESIGUALDADE \nSOCIAL',
+        'VÍCIO',
+        'DOENÇA',
+    ]    
 
-class GetInfoFromAnotherClass(BoxLayout):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.app = App.get_running_app()
+        super(Button, self).__init__(**kwargs)
+        self.text = 'Retira\n carta'
+        self.bind(on_press=self.button_click)
+
+    def button_click(self, instance):
+        card = random.choice(self.cards_desafios)
+        self.text = card
+
+class DrawButtonAcao(Button):
+    cards = ['Carta 1', 'Carta 2', 'Carta 3', 'Carta 4', 'Carta 5']
+    cards_acoes = [
+        'COMPARTILHAR',
+        'ELOGIAR',
+        'VOTAR',
+        'NEGOCIAR',
+        'CURAR',
+        'COOPERAR',
+        'CANTAR',
+        'SUBVERTER',
+        'ALIMENTAR',
+        'CRIAR',
+    ]    
+
+    def __init__(self, **kwargs):
+        super(Button, self).__init__(**kwargs)
+        self.text = 'Retira\n carta'
+        self.bind(on_press=self.button_click)
+
+    def button_click(self, instance):
+        card = random.choice(self.cards_acoes)
+        self.text = card
+
+kv = Builder.load_file('new_window.kv')
 
 class CardGameApp(App):
     def build(self):
